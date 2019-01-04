@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/client_apps/1/client_app_errors
+    body:
+      encoding: UTF-8
+      string: client_app_error%5Bbacktrace%5D&client_app_error%5Berrors%5D=%23%3CActiveModel%3A%3AErrors%3A0x00007ff40e00e038%3E&client_app_error%5Bexception_name%5D=Exception&client_app_error%5Bmessage%5D=test+msg&client_app_error%5Bvalidation_context%5D
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"4ec1a7a2c2261ecef8489b60a7d01670"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 13e0cda2-2030-40fd-8fd9-87dd670f00a3
+      X-Runtime:
+      - '0.584944'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":18,"exception_name":"Exception","backtrace":null,"created_at":"2019-01-04T02:08:03.000Z","updated_at":"2019-01-04T02:08:03.000Z","client_app_id":1,"message":"test
+        msg"}'
+    http_version: 
+  recorded_at: Fri, 04 Jan 2019 02:08:03 GMT
+recorded_with: VCR 4.0.0
