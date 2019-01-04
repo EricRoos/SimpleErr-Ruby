@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe SimpleErr do
-  it "has a version number" do
+  it 'has a version number' do
     expect(SimpleErr::VERSION).not_to be nil
   end
 

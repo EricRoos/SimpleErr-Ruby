@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 RSpec.describe SimpleErr::CreateRequest do
   describe 'construction and validation' do
     let(:client_app_id) { 1 }
-    let(:exception_name){ 'RuntimeError' }
-    let(:message){ 'undefined method for foo' }
+    let(:exception_name) { 'RuntimeError' }
+    let(:message) { 'undefined method for foo' }
     let(:backtrace) { 'a\nb' }
-    let(:payload){
+    let(:payload) do
       {
         client_app_id: client_app_id,
         exception_name: exception_name,
         message: message,
         backtrace: backtrace
       }
-    }
+    end
     let(:request) { described_class.new(payload) }
     subject { request }
     describe '#new' do
@@ -21,7 +23,7 @@ RSpec.describe SimpleErr::CreateRequest do
           it { is_expected.to eq(exception_name) }
         end
         describe 'message' do
-          subject { super().message}
+          subject { super().message }
           it { is_expected.to eq(message) }
         end
       end
@@ -34,11 +36,11 @@ RSpec.describe SimpleErr::CreateRequest do
       end
       context 'invalid params' do
         context 'missing exception name' do
-          let(:exception_name){ nil }
+          let(:exception_name) { nil }
           it { is_expected.to be false }
         end
         context 'missing message' do
-          let(:message){ nil }
+          let(:message) { nil }
           it { is_expected.to be false }
         end
       end
@@ -50,17 +52,17 @@ RSpec.describe SimpleErr::CreateRequest do
         it { is_expected.to be true }
         context 'with nil params' do
           before do
-            allow(request).to receive(:to_param).and_return({client_app_error: {
-              message: nil,
-              backtrace: nil,
-              exception_name: nil
-            }})
+            allow(request).to receive(:to_param).and_return(client_app_error: {
+                                                              message: nil,
+                                                              backtrace: nil,
+                                                              exception_name: nil
+                                                            })
           end
           it { is_expected.to be false }
         end
         context 'with missing params' do
           before do
-            allow(request).to receive(:to_param).and_return({client_app_error: {}})
+            allow(request).to receive(:to_param).and_return(client_app_error: {})
           end
           it { is_expected.to be false }
         end
@@ -72,7 +74,6 @@ RSpec.describe SimpleErr::CreateRequest do
           end
         end
       end
-
     end
 
     describe '#to_param' do
@@ -84,9 +85,9 @@ RSpec.describe SimpleErr::CreateRequest do
 
       describe 'the root body' do
         subject { super()[:client_app_error] }
-        it { is_expected.to include(message: message) } 
-        it { is_expected.to include(backtrace: backtrace) } 
-        it { is_expected.to include(exception_name: exception_name) } 
+        it { is_expected.to include(message: message) }
+        it { is_expected.to include(backtrace: backtrace) }
+        it { is_expected.to include(exception_name: exception_name) }
       end
     end
   end

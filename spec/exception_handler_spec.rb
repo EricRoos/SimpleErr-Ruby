@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe SimpleErr::ExceptionHandler do
   let(:exception_msg) { 'test msg' }
   let(:exception) { Exception.new(exception_msg) }

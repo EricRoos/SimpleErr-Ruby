@@ -1,7 +1,8 @@
-require "simple_err/version"
-require "simple_err/create_request"
-require "simple_err/exception_handler"
+# frozen_string_literal: true
 
+require 'simple_err/version'
+require 'simple_err/create_request'
+require 'simple_err/exception_handler'
 
 module SimpleErr
   class Configuration
@@ -15,11 +16,9 @@ module SimpleErr
     CreateRequest.new(payload)
   end
 
-  def exception_handler(exception)
+  def exception_handler(exception); end
 
-  end
-
-  def self.configure(&block)
+  def self.configure
     yield @@configuration
   end
 
@@ -27,4 +26,3 @@ module SimpleErr
     @@configuration
   end
 end
-

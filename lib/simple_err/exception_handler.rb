@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module SimpleErr
   class ExceptionHandler
     class << self
       def handle(exception)
-        self.new.handle(exception)
+        new.handle(exception)
       end
     end
 
@@ -14,7 +16,8 @@ module SimpleErr
 
     def create_request_payload(exception)
       return nil unless exception
-      return {
+
+      {
         exception_name: exception.class.to_s,
         message: exception.message,
         backtrace: exception.backtrace,

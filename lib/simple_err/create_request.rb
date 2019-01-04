@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_model'
 require 'faraday'
 
@@ -12,7 +14,8 @@ module SimpleErr
 
     def perform
       return false unless valid?
-      conn = Faraday.new(:url => 'http://localhost:3000')
+
+      conn = Faraday.new(url: 'http://localhost:3000')
       response = conn.post "/client_apps/#{client_app_id}/client_app_errors", to_param
       response.status == 201
     end
